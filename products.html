@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChocoHub | Premium Chocolate Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#170d08;--card:#281a12;--gold:#dfbc80;--cream:#fff0df;--muted:#c5ad99;--line:#493222}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.navbar{position:sticky;top:0;z-index:10;background:#170d08f5;border-bottom:1px solid var(--line);padding:18px 7%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font:600 27px 'Playfair Display',serif}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:25px;font-size:13px;color:#e2d1c0}
+.nav-links a:hover{color:var(--gold)}
+.cart-button{background:var(--gold);color:#21130c;padding:11px 16px;border:0;font-size:12px;font-weight:bold}
+.hero{min-height:440px;display:grid;place-items:center;text-align:center;position:relative;isolation:isolate;overflow:hidden;padding:80px 20px}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:url('https://images.unsplash.com/photo-1548907040-4d42bfc2f0c9?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#170d08e8,#170d0866,#170d08e8),linear-gradient(0deg,var(--bg),transparent)}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold);font-weight:bold}
+h1{font:500 clamp(45px,8vw,82px)/1.15 'Playfair Display',serif;margin:23px 0}
+h1 em{color:var(--gold)}
+.hero p{max-width:550px;margin:auto;color:#e5d3c1;font-size:14px}
+.btn{display:inline-block;background:var(--gold);color:#21130c;padding:14px 22px;margin-top:25px;font-size:11px;font-weight:bold;letter-spacing:1px}
+.benefits{display:flex;justify-content:space-around;gap:18px;flex-wrap:wrap;padding:23px;background:#281a12;border-block:1px solid var(--line);font-size:12px;color:#e5c58e}
+.shop{max-width:1400px;margin:auto;padding:70px 7% 100px}
+.shop-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+h2{font:500 clamp(30px,4vw,43px) 'Playfair Display',serif;margin-top:10px}
+.muted{font-size:12px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.filter{border:1px solid var(--line);background:transparent;color:var(--cream);padding:10px 17px;font-size:12px}
+.filter.active,.filter:hover{background:var(--gold);color:#21130c;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}
+.card{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.card[hidden]{display:none}
+.photo{position:relative;overflow:hidden;background:#382016}
+.photo img{width:100%;height:270px;object-fit:cover;transition:transform .5s}
+.card:hover .photo img{transform:scale(1.05)}
+.tag{position:absolute;top:14px;left:14px;background:var(--gold);color:#21130c;padding:5px 9px;font-size:9px;font-weight:bold;letter-spacing:1px}
+.info{padding:22px}
+.type{font-size:10px;letter-spacing:2px;color:var(--gold)}
+.info h3{font:500 24px 'Playfair Display',serif;margin:8px 0}
+.info p{color:var(--muted);font-size:12px;min-height:42px}
+.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+.price{color:var(--gold);font-weight:bold;font-size:17px}
+.add{background:transparent;border:1px solid var(--gold);color:var(--cream);padding:9px 11px;font-size:11px}
+.add:hover{background:var(--gold);color:#21130c}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:75px 7%;background:var(--card)}
+.story img{width:100%;height:370px;object-fit:cover}
+.story p{color:var(--muted);font-size:13px;margin:15px 0}
+.contact{text-align:center;padding:75px 20px;background:radial-gradient(ellipse,#492d1d,#170d08 75%)}
+.contact p{color:var(--muted);font-size:13px;margin-top:12px}
+footer{text-align:center;padding:30px 15px;background:#100a08;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}
+footer .logo{display:block;color:var(--cream);margin-bottom:8px}
+.cart{position:fixed;z-index:30;right:0;top:0;height:100%;width:min(400px,100%);padding:25px;background:#21150f;border-left:1px solid var(--line);box-shadow:-20px 0 60px #0006;overflow-y:auto;transform:translateX(105%);transition:transform .3s}
+.cart.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}
+.cart-head h2{font-size:25px}
+.close{border:0;background:none;color:var(--cream);font-size:27px}
+.item{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.item h3{font-size:13px}
+.item p{font-size:12px;color:var(--gold)}
+.remove{border:0;background:none;color:#e8b9a3;font-size:10px}
+.total{display:flex;justify-content:space-between;margin:22px 0;font-weight:bold}
+.checkout{width:100%;padding:14px;border:0;background:var(--gold);color:#21130c;font-size:11px;font-weight:bold}
+@media(max-width:800px){.navbar{padding:16px 4%}.nav-links{gap:12px;font-size:11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shop{padding-inline:5%}}
+@media(max-width:560px){.navbar{flex-wrap:wrap}.logo{font-size:23px}.nav-links{order:3;width:100%;justify-content:space-between}.grid{grid-template-columns:1fr;max-width:420px;margin:auto}.photo img{height:280px}.story{grid-template-columns:1fr;padding:45px 6%;gap:25px}.story img{height:260px}.hero{min-height:380px}}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+<a class="logo" href="index.html">ChocoHub<span>.</span></a>
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="#products">Shop</a>
+<a href="#story">Our Story</a>
+<a href="#contact">Contact</a>
+</nav>
+<button class="cart-button" id="openCart">Bag (<span id="count">0</span>) ↗</button>
+</header>
+
+<section class="hero">
+<div>
+<div class="eyebrow">THE FINER SIDE OF CHOCOLATE</div>
+<h1>A little more <em>indulgence.</em></h1>
+<p>Discover exquisite chocolate creations made for quiet moments, grand celebrations, and every sweet moment in between.</p>
+<a href="#products" class="btn">EXPLORE OUR COLLECTION ↗</a>
+</div>
+</section>
+
+<div class="benefits">
+<div>✦ Crafted with care</div><div>✦ Quality ingredients</div><div>✦ Made for sharing</div><div>✦ Beautiful chocolate gifts</div>
+</div>
+
+<main>
+<section class="shop" id="products">
+<div class="shop-heading">
+<div><div class="eyebrow">THE CHOCOHUB COLLECTION</div><h2>Find your favourite.</h2></div>
+<p class="muted" id="result">6 delicious discoveries</p>
+</div>
+<div class="filters">
+<button class="filter active" data-cat="all">All Chocolates</button>
+<button class="filter" data-cat="dark">Dark</button>
+<button class="filter" data-cat="milk">Milk</button>
+<button class="filter" data-cat="gifts">Gifts</button>
+</div>
+
+<div class="grid">
+<article class="card" data-category="dark">
+<div class="photo"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=85" alt="Dark chocolate" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Dark+Chocolate'"><span class="tag">BESTSELLER</span></div>
+<div class="info"><span class="type">RICH & INTENSE</span><h3>Signature Dark</h3><p>Deep cocoa notes and a lasting finish.</p><div class="bottom"><span class="price">₹299</span><button class="add" data-name="Signature Dark" data-price="299">+ Add to Bag</button></div></div>
+</article>
+
+<article class="card" data-category="milk">
+<div class="photo"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=85" alt="Milk chocolate" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Milk+Chocolate'"></div>
+<div class="info"><span class="type">SILKY & SMOOTH</span><h3>Velvet Milk</h3><p>Comfortingly creamy chocolate for everyday indulgence.</p><div class="bottom"><span class="price">₹249</span><button class="add" data-name="Velvet Milk" data-price="249">+ Add to Bag</button></div></div>
+</article>
+
+<article class="card" data-category="gifts">
+<div class="photo"><img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=85" alt="Chocolate gift box" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Chocolate+Gifts'"><span class="tag">GIFT FAVOURITE</span></div>
+<div class="info"><span class="type">MADE FOR SHARING</span><h3>The Gift Box</h3><p>An elegant selection for the people who matter most.</p><div class="bottom"><span class="price">₹599</span><button class="add" data-name="The Gift Box" data-price="599">+ Add to Bag</button></div></div>
+</article>
+
+<article class="card" data-category="dark">
+<div class="photo"><img src="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=85" alt="Artisan chocolate" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Artisan+Chocolate'"></div>
+<div class="info"><span class="type">ARTISAN COLLECTION</span><h3>Cocoa Noir</h3><p>A sophisticated cocoa experience for curious palates.</p><div class="bottom"><span class="price">₹349</span><button class="add" data-name="Cocoa Noir" data-price="349">+ Add to Bag</button></div></div>
+</article>
+
+<article class="card" data-category="milk">
+<div class="photo"><img src="https://images.unsplash.com/photo-1548907040-4d42bfc2f0c9?auto=format&fit=crop&w=800&q=85" alt="Chocolate assortment" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Chocolate+Truffles'"></div>
+<div class="info"><span class="type">SOFT & DELICATE</span><h3>Chocolate Truffles</h3><p>Little bites of smooth chocolate luxury.</p><div class="bottom"><span class="price">₹399</span><button class="add" data-name="Chocolate Truffles" data-price="399">+ Add to Bag</button></div></div>
+</article>
+
+<article class="card" data-category="gifts">
+<div class="photo"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=85" alt="Celebration chocolates" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/382016/F0D2A0?text=Celebration+Box'"><span class="tag">SPECIAL OCCASIONS</span></div>
+<div class="info"><span class="type">A THOUGHTFUL GIFT</span><h3>Celebration Box</h3><p>A sweet way to make birthdays memorable.</p><div class="bottom"><span class="price">₹799</span><button class="add" data-name="Celebration Box" data-price="799">+ Add to Bag</button></div></div>
+</article>
+</div>
+</section>
+
+<section class="story" id="story">
+<img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=1000&q=85" alt="Chocolate preparation" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x500/382016/F0D2A0?text=Our+Story'">
+<div><div class="eyebrow">THE CHOCOHUB STORY</div><h2>Chocolate is more than a treat. <span style="color:var(--gold)">It's a feeling.</span></h2><p class="muted">We believe the smallest moments can bring the biggest smiles. Our chocolate collection celebrates life's everyday indulgences and special occasions.</p><a class="btn" href="index.html#about">DISCOVER OUR STORY ↗</a></div>
+</section>
+
+<section class="contact" id="contact">
+<div class="eyebrow">LET'S MAKE LIFE SWEETER</div>
+<h2>Something special in mind?</h2>
+<p>Contact us for gifting, bulk orders and business enquiries.</p>
+<a class="btn" href="mailto:hello@chocohub.com?subject=ChocoHub%20Enquiry">CONTACT CHOCOHUB ↗</a>
+</section>
+</main>
+
+<aside class="cart" id="cart" aria-label="Shopping bag">
+<div class="cart-head"><h2>Your chocolate bag</h2><button class="close" id="closeCart" aria-label="Close cart">×</button></div>
+<div id="items"><p class="empty">Your bag is waiting for something sweet.</p></div>
+<div class="total"><span>Total</span><span id="total">₹0</span></div>
+<button class="checkout" id="checkout">ENQUIRE ABOUT YOUR ORDER ↗</button>
+<p class="muted" style="margin-top:12px">Demo cart only. Payments are not processed here.</p>
+</aside>
+
+<footer><a class="logo" href="index.html">ChocoHub<span>.</span></a><p>Making the world sweeter, one bite at a time.</p><p style="margin-top:10px">© <span id="year"></span> ChocoHub. All rights reserved.</p></footer>
+
+<script>
+const cart=[];
+const panel=document.getElementById('cart');
+document.getElementById('year').textContent=new Date().getFullYear();
+
+document.getElementById('openCart').onclick=()=>panel.classList.add('open');
+document.getElementById('closeCart').onclick=()=>panel.classList.remove('open');
+
+function renderCart(){
+const items=document.getElementById('items');
+items.innerHTML='';
+if(!cart.length)items.innerHTML='<p class="empty">Your bag is waiting for something sweet.</p>';
+cart.forEach((item,index)=>{
+const row=document.createElement('div');row.className='item';
+const details=document.createElement('div');
+const name=document.createElement('h3');name.textContent=item.name+' × '+item.qty;
+const price=document.createElement('p');price.textContent='₹'+item.price*item.qty;
+details.append(name,price);
+const remove=document.createElement('button');remove.className='remove';remove.textContent='REMOVE';
+remove.onclick=()=>{cart.splice(index,1);renderCart()};
+row.append(details,remove);items.append(row);
+});
+document.getElementById('count').textContent=cart.reduce((s,i)=>s+i.qty,0);
+document.getElementById('total').textContent='₹'+cart.reduce((s,i)=>s+i.price*i.qty,0).toLocaleString('en-IN');
+}
+
+document.querySelectorAll('.add').forEach(button=>{
+button.onclick=()=>{
+const name=button.dataset.name,price=Number(button.dataset.price);
+const existing=cart.find(i=>i.name===name);
+if(existing)existing.qty++;else cart.push({name,price,qty:1});
+renderCart();
+button.textContent='ADDED ✓';
+setTimeout(()=>button.textContent='+ Add to Bag',1000);
+};
+});
+
+document.querySelectorAll('.filter').forEach(button=>{
+button.onclick=()=>{
+document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+const cat=button.dataset.cat;let count=0;
+document.querySelectorAll('.card').forEach(card=>{
+const show=cat==='all'||card.dataset.category===cat;
+card.hidden=!show;if(show)count++;
+});
+document.getElementById('result').textContent=count+' delicious discoveries';
+};
+});
+
+document.getElementById('checkout').onclick=()=>{
+if(!cart.length){alert('Your bag is empty! Add a chocolate first.');return;}
+const lines=cart.map(i=>i.name+' × '+i.qty+' = ₹'+i.price*i.qty).join('\n');
+const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+location.href='mailto:hello@chocohub.com?subject='+encodeURIComponent('ChocoHub Order Enquiry')+'&body='+encodeURIComponent('Hello ChocoHub,\n\nI would like to enquire about:\n\n'+lines+'\n\nTotal: ₹'+total);
+};
+</script>
+</body>
+</html>

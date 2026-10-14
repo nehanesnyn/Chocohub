@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChocoHub | Luxury Chocolate</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#170d08;color:#fff0df;font-family:'DM Sans',sans-serif}
+a{text-decoration:none;color:inherit}
+
+nav{
+height:78px;padding:0 7%;
+display:flex;align-items:center;
+justify-content:space-between;
+background:#170d08;border-bottom:1px solid #493222
+}
+
+.logo{font-family:'Playfair Display',serif;font-size:26px;color:#f0d2a0}
+nav a{color:#e6d2bd}
+
+.hero{
+min-height:85vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;padding:65px 20px;
+position:relative;overflow:hidden;background:#21130c
+}
+
+.hero:before{
+content:"";position:absolute;inset:0;
+background:linear-gradient(#170d086b,#170d08d9),
+url('https://images.unsplash.com/photo-1548907040-4d42bfc2f0c9?auto=format&fit=crop&w=1800&q=85') center/cover;
+animation:zoom 16s ease-out both;z-index:0
+}
+
+.hero>*{position:relative;z-index:1}
+
+@keyframes zoom{
+from{transform:scale(1.12)}
+to{transform:scale(1)}
+}
+
+.eyebrow{color:#e0b875;letter-spacing:4px;font-size:11px}
+
+h1{
+font:500 clamp(48px,8vw,100px)/1.12 'Playfair Display',serif;
+margin:28px 0
+}
+
+h1 em{display:block;color:#e4bd7c}
+
+.hero p{
+max-width:530px;color:#e0d0c0;
+line-height:1.9;font-size:15px
+}
+
+.btn{
+display:inline-block;margin:30px 10px 0;
+padding:15px 23px;background:#d9b477;
+color:#21130b;font-size:12px;font-weight:bold;
+transition:.3s
+}
+
+.btn:hover{background:#fff0cf;transform:translateY(-3px)}
+
+.btn-outline{
+background:transparent;color:#fff0df;
+border:1px solid #d9b477
+}
+
+.features{
+display:flex;justify-content:space-around;
+gap:20px;flex-wrap:wrap;padding:26px;
+background:#281a12;color:#e5c58e;font-size:13px
+}
+
+section.collection{padding:85px 7%;text-align:center}
+
+h2{
+font:500 clamp(32px,5vw,52px) 'Playfair Display',serif;
+margin:16px 0
+}
+
+h2 span{color:#e4bd7c;font-style:italic}
+
+.intro{color:#c7b4a2;line-height:1.8}
+
+.grid{
+display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+gap:24px;margin-top:45px;text-align:left
+}
+
+.card{
+background:#281a12;border:1px solid #493222;
+transition:.3s;overflow:hidden
+}
+
+.card:hover{transform:translateY(-7px);border-color:#d9b477}
+
+.card img{
+width:100%;height:260px;object-fit:cover;
+background:#382016;color:#e4bd7c
+}
+
+.card div{padding:22px}
+.card small{color:#e0b875;letter-spacing:2px}
+.card h3{font:25px 'Playfair Display',serif;margin:12px 0}
+.card p{font-size:13px;color:#c7b4a2;line-height:1.8}
+
+.card-link{display:block}
+.card-link:hover h3{color:#e4bd7c}
+
+.about{
+display:grid;grid-template-columns:1fr 1fr;
+align-items:center;gap:55px;padding:80px 7%;
+background:#281a12
+}
+
+.about img{
+width:100%;height:400px;object-fit:cover;
+background:#382016
+}
+
+.about p{color:#c7b4a2;line-height:1.9;margin:15px 0}
+
+.contact{
+text-align:center;padding:85px 20px;
+background:radial-gradient(ellipse,#492d1d,#170d08 75%)
+}
+
+.contact p{color:#c7b4a2;margin-top:15px}
+
+footer{
+text-align:center;padding:35px 15px;
+background:#100a08;color:#c7b4a2;
+font-size:12px;border-top:1px solid #493222
+}
+
+footer .logo{display:block;margin-bottom:12px}
+
+@media(max-width:700px){
+nav{padding:0 5%;height:68px}
+nav .navlink{font-size:12px}
+.grid{grid-template-columns:1fr;max-width:420px;margin:35px auto}
+.about{grid-template-columns:1fr;padding:55px 6%}
+.about img{height:280px}
+.hero{min-height:78vh}
+.features{flex-direction:column;padding:25px 7%}
+section.collection{padding:65px 6%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a class="logo" href="index.html">ChocoHub<span>.</span></a>
+<a class="navlink" href="products.html">Explore Collection ↗</a>
+</nav>
+
+<main>
+
+<section class="hero" id="home">
+<div class="eyebrow">THE ART OF FINE CHOCOLATE</div>
+
+<h1>The art of <em>indulgence.</em></h1>
+
+<p>
+Discover a world of exquisite chocolate, crafted with passion
+and inspired by the art of indulgence. Every bite is a moment
+worth savouring.
+</p>
+
+<a class="btn" href="products.html">DISCOVER OUR COLLECTION ↗</a>
+<a class="btn btn-outline" href="#about">OUR STORY</a>
+</section>
+
+<section class="features">
+<div>✦ Chocolate Crafted with Care</div>
+<div>✦ Quality Ingredients</div>
+<div>✦ Made for Every Occasion</div>
+</section>
+
+<section class="collection" id="collection">
+
+<div class="eyebrow">OUR COLLECTION</div>
+
+<h2>Find your kind of <span>happiness.</span></h2>
+
+<p class="intro">Something special for every chocolate craving.</p>
+
+<div class="grid">
+
+<a class="card card-link" href="products.html">
+<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" alt="Dark chocolate">
+<div>
+<small>RICH & INTENSE</small>
+<h3>Dark Chocolate</h3>
+<p>Deep cocoa flavour for true chocolate lovers.</p>
+</div>
+</a>
+
+<a class="card card-link" href="products.html">
+<img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=80" alt="Milk chocolate">
+<div>
+<small>SMOOTH & CREAMY</small>
+<h3>Milk Chocolate</h3>
+<p>A timeless classic with a creamy chocolate taste.</p>
+</div>
+</a>
+
+<a class="card card-link" href="products.html">
+<img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80" alt="Chocolate gifts">
+<div>
+<small>LITTLE LUXURIES</small>
+<h3>Chocolate Gifts</h3>
+<p>Thoughtful chocolate treats for life's best moments.</p>
+</div>
+</a>
+
+</div>
+
+<a class="btn" href="products.html">SHOP ALL CHOCOLATES ↗</a>
+
+</section>
+
+<section class="about" id="about">
+
+<img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=1000&q=85" alt="Chocolate preparation">
+
+<div>
+<div class="eyebrow">THE CHOCOHUB STORY</div>
+
+<h2>Small moments.<br><span>Big happiness.</span></h2>
+
+<p>
+ChocoHub is built around one simple belief:
+chocolate has the power to bring people together.
+</p>
+
+<p>
+From everyday treats to special gifts, our goal is
+to make every chocolate moment worth celebrating.
+</p>
+
+<a class="btn" href="products.html">EXPLORE CHOCOHUB ↗</a>
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+
+<div class="eyebrow">LET'S MAKE SOMETHING SWEET</div>
+
+<h2>Have a chocolate-sized idea?</h2>
+
+<p>Contact us for product enquiries, bulk orders, or partnerships.</p>
+
+<a class="btn" href="mailto:hello@chocohub.com?subject=ChocoHub%20Enquiry">
+GET IN TOUCH ✉
+</a>
+
+</section>
+
+</main>
+
+<footer>
+<a class="logo" href="index.html">ChocoHub.</a>
+<p>Making the world a little sweeter, one bite at a time.</p>
+<p style="margin-top:15px">
+© <span id="year"></span> ChocoHub. All rights reserved.
+</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
